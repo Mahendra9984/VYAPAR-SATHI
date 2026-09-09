@@ -1,0 +1,297 @@
+.profile-page {
+    min-height: 100vh;
+    background: #f4f7fb;
+    padding: 35px 7%;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.profile-header p {
+    margin-top: 10px;
+    color: #58708f;
+    font-size: 16px;
+}
+
+.profile-tabs {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.profile-tab {
+    border: none;
+    background: transparent;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #38516e;
+    cursor: pointer;
+}
+
+.profile-tab.active {
+    background: #2864e8;
+    color: white;
+}
+
+.profile-card {
+    background: white;
+    border: 1px solid #dce3ed;
+    border-radius: 15px;
+    padding: 38px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.section-heading span {
+    color: #58708f;
+    font-size: 14px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 13px 15px;
+    font-size: 14px;
+    color: #111827;
+    background: white;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2864e8;
+    box-shadow: 0 0 0 3px rgba(40, 100, 232, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.full-width {
+    margin-top: 5px;
+}
+
+.form-footer {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-button {
+    border: none;
+    background: #2864e8;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #1854d1;
+}
+
+.save-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.profile-success {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 13px 18px;
+    border-radius: 8px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 700;
+}
+
+.profile-error {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 13px 18px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 700;
+}
+
+.profile-loading {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #2864e8;
+}
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+.security-form {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+.notification-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.notification-item h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.notification-item p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+.switch {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #cbd5e1;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.switch input:checked+.slider {
+    background: #2864e8;
+}
+
+.switch input:checked+.slider::before {
+    transform: translateX(22px);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+    .profile-page {
+        padding: 25px 4%;
+    }
+
+    .profile-card {
+        padding: 25px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-tabs {
+        overflow-x: auto;
+    }
+}

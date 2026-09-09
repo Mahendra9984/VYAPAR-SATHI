@@ -1,0 +1,242 @@
+.need-help-page {
+    min-height: 100vh;
+    background: #f5f7f6;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.help-header {
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-button {
+    border: none;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.back-button:hover {
+    background: #eef5f1;
+}
+
+.help-header h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #173d2d;
+}
+
+.help-header p {
+    margin: 6px 0 0;
+    color: #68756e;
+}
+
+.help-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.help-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.help-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.help-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 10px;
+    background: #eaf4ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.help-card h3 {
+    margin: 0 0 7px;
+    color: #173d2d;
+}
+
+.help-card p {
+    margin: 0;
+    color: #707b75;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.support-form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+}
+
+.form-heading h2 {
+    margin: 0;
+    color: #173d2d;
+    font-size: 22px;
+}
+
+.form-heading p {
+    margin: 7px 0 25px;
+    color: #747e78;
+}
+
+.form-group {
+    margin-bottom: 19px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #35433c;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d8dfda;
+    border-radius: 9px;
+    padding: 12px 13px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #4b8f68;
+    box-shadow: 0 0 0 3px rgba(75, 143, 104, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.submit-support-btn {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    padding: 13px;
+    background: #247447;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-support-btn:hover {
+    background: #1c6039;
+}
+
+.submit-support-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.success-message {
+    background: #e8f7ed;
+    color: #20713a;
+    border: 1px solid #bde5c8;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.error-message {
+    background: #fff0f0;
+    color: #b3261e;
+    border: 1px solid #f0c4c1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.quick-help {
+    background: white;
+    margin-top: 22px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.quick-help h2 {
+    margin: 0 0 18px;
+    color: #173d2d;
+}
+
+.faq-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #edf0ee;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item strong {
+    color: #35433c;
+    font-size: 14px;
+}
+
+.faq-item span {
+    color: #737d77;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .help-options {
+        grid-template-columns: 1fr;
+    }
+
+    .need-help-page {
+        padding: 18px;
+    }
+
+    .help-header {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 500px) {
+    .support-form-card {
+        padding: 20px;
+    }
+
+    .help-header h1 {
+        font-size: 24px;
+    }
+}
