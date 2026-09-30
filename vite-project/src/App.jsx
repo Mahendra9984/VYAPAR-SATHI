@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LandingPage from "./component/LandingPage.jsx";
 import Register from "./component/Register.jsx";
@@ -68,7 +68,7 @@ const AdminRoute = ({ children }) => {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         {/* =====================================================
@@ -230,7 +230,7 @@ function App() {
         />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
