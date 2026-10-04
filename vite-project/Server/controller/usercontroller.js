@@ -1,20 +1,16 @@
+import "dotenv/config";
+
 import User from "../model/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
+import { BrevoClient } from "@getbrevo/brevo";
 
 // =====================================================
-// EMAIL TRANSPORTER
+// BREVO CONFIGURATION
 // =====================================================
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
+const brevo = new BrevoClient({
+    apiKey: process.env.BREVO_API_KEY,
 });
 
 // =====================================================
@@ -62,9 +58,6 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Every newly registered account is a normal user.
-        // Admin will be assigned separately.
-
         const user = await User.create({
             name: cleanName,
             email: cleanEmail,
@@ -109,6 +102,10 @@ const sendOtp = async (req, res) => {
 
         const cleanEmail = email.trim().toLowerCase();
 
+        // =================================================
+        // FIND USER
+        // =================================================
+
         const user = await User.findOne({
             email: cleanEmail,
         });
@@ -120,23 +117,50 @@ const sendOtp = async (req, res) => {
             });
         }
 
-        // Generate 6 digit OTP
+        // =================================================
+        // GENERATE 6 DIGIT OTP
+        // =================================================
+
         const otp = Math.floor(
             100000 + Math.random() * 900000
         ).toString();
 
         // =================================================
-        // SEND EMAIL FIRST
+        // CHECK BREVO CONFIGURATION
         // =================================================
 
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: cleanEmail,
-            subject: "Vyapar Sathi Login OTP",
-            text: `Your Vyapar Sathi login OTP is ${otp}. It is valid for 2 minutes.`,
-        };
+        console.log(
+            "BREVO SENDER EMAIL:",
+            process.env.BREVO_SENDER_EMAIL
+        );
 
-        await transporter.sendMail(mailOptions);
+        console.log(
+            "BREVO API KEY:",
+            process.env.BREVO_API_KEY
+                ? "Loaded"
+                : "Missing"
+        );
+
+        // =================================================
+        // SEND EMAIL USING BREVO API
+        // =================================================
+
+        await brevo.transactionalEmails.sendTransacEmail({
+            sender: {
+                email: process.env.BREVO_SENDER_EMAIL,
+                name: "Vyapar Sathi",
+            },
+
+            to: [
+                {
+                    email: cleanEmail,
+                },
+            ],
+
+            subject: "Vyapar Sathi Login OTP",
+
+            textContent: `Your Vyapar Sathi login OTP is ${otp}. It is valid for 2 minutes.`,
+        });
 
         // =================================================
         // SAVE OTP ONLY AFTER EMAIL SUCCESS
@@ -155,7 +179,10 @@ const sendOtp = async (req, res) => {
             message: "OTP sent successfully",
         });
     } catch (error) {
-        console.error("Send OTP error FULL:", error);
+        console.error(
+            "Send OTP error FULL:",
+            error
+        );
 
         return res.status(500).json({
             success: false,
@@ -183,6 +210,10 @@ const verifyOtp = async (req, res) => {
 
         const cleanEmail = email.trim().toLowerCase();
 
+        // =================================================
+        // FIND USER
+        // =================================================
+
         const user = await User.findOne({
             email: cleanEmail,
         });
@@ -194,7 +225,10 @@ const verifyOtp = async (req, res) => {
             });
         }
 
-        // Check OTP
+        // =================================================
+        // CHECK OTP
+        // =================================================
+
         if (
             !user.otp ||
             user.otp !== otp.toString()
@@ -205,7 +239,10 @@ const verifyOtp = async (req, res) => {
             });
         }
 
-        // Check expiry
+        // =================================================
+        // CHECK OTP EXPIRY
+        // =================================================
+
         if (
             !user.otpExpire ||
             user.otpExpire < new Date()
@@ -216,7 +253,10 @@ const verifyOtp = async (req, res) => {
             });
         }
 
-        // Clear OTP
+        // =================================================
+        // CLEAR OTP
+        // =================================================
+
         user.otp = null;
         user.otpExpire = null;
 
@@ -227,7 +267,10 @@ const verifyOtp = async (req, res) => {
             message: "OTP verified successfully",
         });
     } catch (error) {
-        console.error("Verify OTP error:", error);
+        console.error(
+            "Verify OTP error:",
+            error
+        );
 
         return res.status(500).json({
             success: false,
@@ -242,7 +285,11 @@ const verifyOtp = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { email, password, otp } = req.body;
+        const {
+            email,
+            password,
+            otp,
+        } = req.body;
 
         if (!email || !password || !otp) {
             return res.status(400).json({
@@ -253,6 +300,10 @@ const loginUser = async (req, res) => {
         }
 
         const cleanEmail = email.trim().toLowerCase();
+
+        // =================================================
+        // FIND USER
+        // =================================================
 
         const user = await User.findOne({
             email: cleanEmail,
@@ -350,7 +401,10 @@ const loginUser = async (req, res) => {
             },
         });
     } catch (error) {
-        console.error("Login error:", error);
+        console.error(
+            "Login error:",
+            error
+        );
 
         return res.status(500).json({
             success: false,
