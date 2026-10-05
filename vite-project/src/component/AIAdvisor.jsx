@@ -638,7 +638,7 @@ If scheme information may have changed, tell the user to verify it from an offic
             );
 
             const response = await fetch(
-                "http://localhost:5000/api/ai/chat",
+                "https://vyapar-sathi-1.onrender.com/api/ai/chat",
                 {
                     method: "POST",
 
