@@ -60,7 +60,7 @@ const EntrepreneurDashboard = () => {
                 setError("");
 
                 const response = await axios.get(
-                    "/api/applications/my-applications",
+                    "https://vyapar-sathi-1.onrender.com/api/applications/my-applications",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
