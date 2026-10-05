@@ -454,7 +454,7 @@ const Documents = () => {
             setMessage("");
 
             const response = await axios.delete(
-                `http://localhost:5000/api/documents/${documentId}`,
+                `https://vyapar-sathi-1.onrender.com/api/documents/${documentId}`,
 {
     headers: {
         Authorization: `Bearer ${token}`,
