@@ -50,7 +50,7 @@ const Documents = () => {
             setMessage("");
 
             const response = await axios.get(
-                "http://localhost:5000/api/documents",
+                "https://vyapar-sathi-1.onrender.com/api/documents",
                 {
                     headers: {
                         Authorization: `Bearer ${ token } `,
