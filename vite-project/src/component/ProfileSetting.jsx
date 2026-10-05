@@ -69,7 +69,7 @@ const ProfileSetting = () => {
                 }
 
                 const response = await axios.get(
-                    "http://localhost:5000/api/profile",
+                    "https://vyapar-sathi-1.onrender.com/api/profile",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -251,7 +251,7 @@ const ProfileSetting = () => {
             }
 
             const response = await axios.put(
-                "http://localhost:5000/api/profile/change-password",
+                "https://vyapar-sathi-1.onrender.com/api/profile/change-password",
                 passwordData,
                 {
                     headers: {
