@@ -88,7 +88,7 @@ const HyperLocalAdvisory = () => {
             setLoading(true);
 
             const response = await axios.post(
-                "http://localhost:5000/api/hyper-local",
+                "https://vyapar-sathi-1.onrender.com/api/hyper-local",
                 {
                     location,
                     businessContext,
