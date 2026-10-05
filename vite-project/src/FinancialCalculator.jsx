@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./FinancialCalculator.css";
 
 const API_URL =
-    "http://localhost:5000/api/financial-calculator/calculate";
+    "https://vyapar-sathi-1.onrender.com/api/financial-calculator/calculate";
 
 const FinancialCalculator = () => {
     const [calculatorType, setCalculatorType] = useState("emi");
