@@ -121,7 +121,7 @@ const ApplicationPage = ({ onBack }) => {
             const token = getToken();
 
             const response = await axios.get(
-                "http://localhost:5000/api/applications/my-applications",
+                "https://vyapar-sathi-1.onrender.com/api/applications/my-applications",
                 {
                     headers: token
                         ? {
