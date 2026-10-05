@@ -49,7 +49,7 @@ const NeedHelp = () => {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/support",
+                "https://vyapar-sathi-1.onrender.com/api/support",
                 {
                     method: "POST",
                     headers: {
