@@ -26,7 +26,7 @@ const AdminDashboard = () => {
                 }
 
                 const response = await fetch(
-                    "http://localhost:5000/api/admin/dashboard",
+                    "https://vyapar-sathi-1.onrender.com/api/admin/dashboard",
                     {
                         method: "GET",
                         headers: {
